@@ -1,12 +1,37 @@
-import { Text } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Image, ScrollView, Text, View } from "react-native";
+import { icons, images } from "@/constants";
+import InputField from "@/components/InputField";
+import { useState } from "react";
 
-// create new arrow function component that returns a view with a text
 const SignUp = () => {
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
   return (
-    <SafeAreaView>
-      <Text>Sign Up</Text>
-    </SafeAreaView>
+    <ScrollView className="flex-1 bg-white">
+      <View className="flex-1 bg-white">
+        <View className="relative w-full h-[250px]">
+          <Image source={images.signUpCar} className="z-0 w-full h-[250px]" />
+          {/*Absolutely positing text just at the bottom of this image, going within it as there is white gradient*/}
+          <Text className="text-2xl text-black font-JakartaSemiBold absolute bottom-5 left-5">
+            Create Your Account
+          </Text>
+        </View>
+        <View className=""></View>
+        {/*Render custom component InputField*/}
+        {/*Go into input field and accept all of the below props*/}
+        <InputField
+          label="Name"
+          placeholder="Enter Your Name"
+          icon={icons.person}
+          value={form.name}
+          onChangeText={(value) => setForm({ ...form, name: value })}
+        />
+      </View>
+    </ScrollView>
   );
 };
 
