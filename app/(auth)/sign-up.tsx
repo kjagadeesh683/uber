@@ -4,6 +4,7 @@ import InputField from "@/components/InputField";
 import { useState } from "react";
 import CustomButton from "@/components/CustomButton";
 import { Link } from "expo-router";
+import OAuth from "@/components/OAuth";
 
 const SignUp = () => {
   const [form, setForm] = useState({
@@ -46,7 +47,7 @@ const SignUp = () => {
             placeholder="Enter your password"
             icon={icons.lock}
             secureTextEntry={true}
-            value={form.name}
+            value={form.password}
             onChangeText={(value) => setForm({ ...form, password: value })}
           />
 
@@ -57,6 +58,7 @@ const SignUp = () => {
           />
 
           {/*OAuth*/}
+          <OAuth />
 
           <Link
             href="/sign-in"
